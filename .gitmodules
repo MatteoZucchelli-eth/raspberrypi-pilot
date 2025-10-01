@@ -1,0 +1,12 @@
+[submodule "db_api_raspi"]
+	path = db_api_raspi
+	url = git@github.com:MatteoZucchelli-eth/db_api_raspi.git
+[submodule "mqtt_broker"]
+	path = mqtt_broker
+	url = git@github.com:MatteoZucchelli-eth/mqtt_broker.git
+[submodule "mqtt_websocket"]
+	path = mqtt_websocket
+	url = git@github.com:MatteoZucchelli-eth/mqtt_websocket.git
+[submodule "nautica_app"]
+	path = nautica_app
+	url = git@github.com:MatteoZucchelli-eth/nautica_app.git
