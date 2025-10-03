@@ -8,9 +8,9 @@ services:
     ports:
       - "1883:1883"
     volumes:
-      - ./mqtt_broker_old/mosquitto/config:/mosquitto/config
-      - ./mqtt_broker_old/mosquitto/data:/mosquitto/data
-      - ./mqtt_broker_old/mosquitto/log:/mosquitto/log
+      - ./mqtt_broker/mosquitto/config:/mosquitto/config
+      - ./mqtt_broker/mosquitto/data:/mosquitto/data
+      - ./mqtt_broker/mosquitto/log:/mosquitto/log
     
 
   mqtt_websocket:
@@ -36,14 +36,14 @@ services:
     
 
   db_api_raspi:
-    build: ./db_api_rasppi
+    build: ./db_api_raspi
     image: matteozucchellieth/raspberry_db_api:latest
     container_name: raspberry_db_api
     restart: unless-stopped
     ports:
       - "8000:8000"
     volumes:
-      - ./db_api_rasppi:/app
+      - ./db_api_raspi:/app
     working_dir: /app
     environment:
       - API_PORT=8000
@@ -52,12 +52,12 @@ services:
     
 
   sync_worker:
-    build: ./db_api_rasppi
+    build: ./db_api_raspi
     image: matteozucchellieth/raspberry_db_sync:latest
     container_name: raspberry_db_sync
     restart: unless-stopped
     volumes:
-      - ./db_api_rasppi:/app
+      - ./db_api_raspi:/app
     working_dir: /app
     environment:
       - REMOTE_SYNC_ENDPOINT=http://${ROBOT_IP}:8001/sync
